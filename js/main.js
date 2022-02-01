@@ -1,5 +1,5 @@
 import start from "./modules/start.js";
-import getFormPerson from "./modules/fornPerson.js";
+import getFormPerson from "./modules/fornmPerson.js";
 
 const init = (selectorApp, title) => {
   const app = document.querySelector(selectorApp);
