@@ -52,7 +52,7 @@ const createFormPerson = (n) => {
     required: true,
   });
 
-fieldTicket.append(labelTicket, inputTicket);
+  fieldTicket.append(labelTicket, inputTicket);
 
   const button = createElement('button', {
     className: 'btn-confirm',
