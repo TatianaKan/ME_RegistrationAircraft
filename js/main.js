@@ -13,8 +13,8 @@ const init = (selectorApp, title) => {
     firstForm.remove();
 
     main.append(...forms);//спред оператор, выводит элементы массива по одному через запятую
-  
-  readyPlane(forms, main);
+
+    readyPlane(forms, main);
   });
 };
 

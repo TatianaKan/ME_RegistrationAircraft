@@ -25,8 +25,6 @@ const createBlockSeat = (n, count) => {
         value: `${i}${letter}`,
       });
 
-
-
       wrapperCheck.append(check);
       seat.append(wrapperCheck);
       return seat;
@@ -106,7 +104,8 @@ const createAirPlane = (title, scheme) => {
 
 
 const airPlane = (main, data) => {
-  const title = 'Выберите  место';
+  const title = `Выберите ${data.length} 
+  ${data.length < 2  ? 'место' : data.length >= 2 && data.length < 5 ? 'места' : 'мест'}`;
 
   const scheme = ['exit', 11, 'exit', 1, 'exit', 17, 'exit'];
 
