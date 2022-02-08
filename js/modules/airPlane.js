@@ -69,8 +69,10 @@ const createAirPlane =  (boockingSeat, title, tourData) => {
 
     const cockpitButton = createElement('button', {
       className: 'cockpit-confirm',
+      name: 'send',
       type: 'submit',
       textContent: 'Подтвердить',
+      disabled: true
     });
 
     cockpit.append(cockpitTitle, cockpitButton);
@@ -125,6 +127,8 @@ const checkSeat = async (boockingSeat, form, data, id) => {
     const formData = new FormData(form);
     const checked = [...formData].map(([, value]) => value)
 
+    form.send.disabled = checked.length !== data.length;
+
     if (checked.length === data.length) {
       [...form].forEach(item => {
         if (item.checked === false && item.name === 'seat') {
@@ -133,7 +137,7 @@ const checkSeat = async (boockingSeat, form, data, id) => {
       })
     } else {
       [...form].forEach(item => {
-        if (!boockingSeat.includes(item.value)) {
+        if (!boockingSeat.includes(item.value)&& item.name === 'seat') {
           item.disabled = false;
         }
       })
