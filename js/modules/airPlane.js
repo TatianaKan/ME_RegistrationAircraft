@@ -43,11 +43,14 @@ const createBlockSeat = (n, count, boockingSeat) => {
   return fuselage;
 };
 
-const createAirPlane = (title, tourData) => {
+const createAirPlane = async (title, tourData) => {
   const scheme = tourData.scheme;
 
-  const boockingSeat = getStorage(tourData.id).map(item => item.seat);
-  console.log(boockingSeat);
+  const dataResponse = await getStorage(tourData.id);
+  const boockingSeat = dataResponse.map(item => item.seat);
+  
+  // .map(item => item.seat);
+ 
 
 
   const choisesSeat = createElement('form', {
@@ -112,8 +115,11 @@ const createAirPlane = (title, tourData) => {
   return choisesSeat;
 };
 
-const checkSeat = (form, data, id) => {
-  const boockingSeat = getStorage(id).map(item => item.seat)
+const checkSeat = async(form, data, id) => {
+  const dataResponse = await getStorage(id);
+  const boockingSeat = dataResponse.map(item => item.seat)
+  
+  // .map(item => item.seat)
 
   form.addEventListener('change', () => {
     const formData = new FormData(form);
@@ -156,10 +162,10 @@ const checkSeat = (form, data, id) => {
   })
 };
 
-const airPlane = (main, data, tourData) => {
+const airPlane = async (main, data, tourData) => {
   const title = `Выберите ${declOfNum(data.length, ['место', 'места', 'мест'])} `
 
-  const choiseForm = createAirPlane(title, tourData);
+  const choiseForm = await createAirPlane(title, tourData);
   checkSeat(choiseForm, data, tourData.id);
 
   // const title = `Выберите ${data.length} 
